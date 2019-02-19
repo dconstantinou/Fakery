@@ -11,28 +11,9 @@ public final class Provider {
     if let translationData = translations[locale] {
       translation = translationData
     } else {
-      let bundle = Bundle(for: Provider.self)
-      
-      var path = bundle.path(forResource: locale,
-                             ofType: Config.pathExtension,
-                             inDirectory: Config.dirPath) ??
-                 bundle.path(forResource: locale,
-                             ofType: Config.pathExtension,
-                             inDirectory: Config.dirFrameworkPath)
 
-      if !Config.dirResourcePath.isEmpty {
-        path = "\(Config.dirResourcePath)/\(locale).\(Config.pathExtension)"
-      }
 
-      if let resourcePath = Bundle(for: Provider.self).resourcePath {
-        let bundlePath = resourcePath + "/Faker.bundle"
-
-        if let bundle = Bundle(path: bundlePath) {
-          path = bundle.path(forResource: locale, ofType: Config.pathExtension)
-        }
-      }
-
-      if let path = path {
+      if let path = path(for: locale) {
         let fileURL = URL(fileURLWithPath: path)
 
         if let data = try? Data(contentsOf: fileURL) {
@@ -44,4 +25,30 @@ public final class Provider {
 
     return translation
   }
+  
+  private func path(for locale: String) -> String? {
+    if !Config.dirResourcePath.isEmpty {
+      return "\(Config.dirResourcePath)/\(locale).\(Config.pathExtension)"
+    }
+
+    let bundle = Bundle(for: Provider.self)
+    
+    var path = bundle.path(forResource: locale,
+                           ofType: Config.pathExtension,
+                           inDirectory: Config.dirPath) ??
+      bundle.path(forResource: locale,
+                  ofType: Config.pathExtension,
+                  inDirectory: Config.dirFrameworkPath)
+    
+    if let resourcePath = Bundle(for: Provider.self).resourcePath {
+      let bundlePath = resourcePath + "/Faker.bundle"
+      
+      if let bundle = Bundle(path: bundlePath) {
+        path = bundle.path(forResource: locale, ofType: Config.pathExtension)
+      }
+    }
+    
+    return path
+  }
+
 }
