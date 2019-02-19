@@ -6,7 +6,7 @@ public final class Commerce: Generator {
   }
 
   public func department(maximum: Int = 3, fixedAmount: Bool = false) -> String {
-    let amount = fixedAmount ? maximum : 1 + Int(arc4random_uniform(UInt32(maximum)))
+    let amount = fixedAmount ? maximum : 1 + Int.random(in: 0...maximum)
 
     let fetchedCategories = categories(amount)
     let count = fetchedCategories.count
