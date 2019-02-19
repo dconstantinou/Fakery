@@ -19,8 +19,9 @@ public final class Number {
     return Double.random(in: min...max)
   }
 
-  public func increasingUniqueId() -> Int {
-    OSAtomicIncrement64(&lastUsedId)
-    return Int(lastUsedId)
-  }
+  // (todo): Fix this implementation so that it works in Linux
+//  public func increasingUniqueId() -> Int {
+//    OSAtomicIncrement64(&lastUsedId)
+//    return Int(lastUsedId)
+//  }
 }

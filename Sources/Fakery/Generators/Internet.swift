@@ -61,8 +61,7 @@ public final class Internet: Generator {
 
   public func safeEmail() -> String {
     let topLevelDomains = ["org", "com", "net"]
-    let count = UInt32(topLevelDomains.count)
-    let topLevelDomain = topLevelDomains[Int(arc4random_uniform(count))]
+    let topLevelDomain = topLevelDomains.random()!
 
     return [username(), "example." + topLevelDomain].joined(separator: "@")
   }
@@ -72,7 +71,7 @@ public final class Internet: Generator {
     let diffLength = maximumLength - minimumLength
 
     if diffLength > 0 {
-      let diffRandom = Int(arc4random_uniform(UInt32(diffLength + 1)))
+      let diffRandom = Int.random(in: 0...diffLength)
       temp += lorem.characters(amount: diffRandom)
     }
 
@@ -81,7 +80,7 @@ public final class Internet: Generator {
 
   public func ipV4Address() -> String {
     let ipRand = {
-      2 + arc4random() % 253
+      Int.random(in: 2...253)
     }
 
     return String(format: "%d.%d.%d.%d", ipRand(), ipRand(), ipRand(), ipRand())
@@ -91,7 +90,7 @@ public final class Internet: Generator {
     var components: [String] = []
 
     for _ in 0..<8 {
-      components.append(String(format: "%X", arc4random() % 65536))
+      components.append(String(format: "%X", Int.random(in: 0...65536) ))
     }
 
     return components.joined(separator: ":")
