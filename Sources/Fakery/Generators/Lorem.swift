@@ -24,9 +24,7 @@ public final class Lorem: Generator {
 
     if amount > 0 {
       for _ in 0..<amount {
-        
-        
-        let char = Character(UnicodeScalar(Int.random(in: 0...((122-97) + 97)))!)
+        let char = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".randomElement()!
         chars.append(char)
       }
     }

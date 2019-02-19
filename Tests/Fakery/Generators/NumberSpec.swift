@@ -11,11 +11,11 @@ final class NumberSpec: QuickSpec {
         number = Number()
       }
 
-      it("creates contionusly increasing ids") {
-        expect(number.increasingUniqueId()).to(equal(1))
-        expect(number.increasingUniqueId()).to(equal(2))
-        expect(number.increasingUniqueId()).to(equal(3))
-      }
+//      it("creates contionusly increasing ids") {
+//        expect(number.increasingUniqueId()).to(equal(1))
+//        expect(number.increasingUniqueId()).to(equal(2))
+//        expect(number.increasingUniqueId()).to(equal(3))
+//      }
 
       it("creates random Ints") {
         expect(number.randomInt()) <= 1000
@@ -49,16 +49,16 @@ final class NumberSpec: QuickSpec {
         expect(number.randomFloat(min:5, max:7)) >= 5
       }
 
-      it("creates random CGFloats") {
-        expect(number.randomCGFloat()) <= 1000
-        expect(number.randomCGFloat()) >= 0
-
-        expect(number.randomCGFloat(min:10)) >= 10
-        expect(number.randomCGFloat(max:10)) <= 10
-
-        expect(number.randomCGFloat(min:5, max:7)) <= 7
-        expect(number.randomCGFloat(min:5, max:7)) >= 5
-      }
+//      it("creates random CGFloats") {
+//        expect(number.randomCGFloat()) <= 1000
+//        expect(number.randomCGFloat()) >= 0
+//
+//        expect(number.randomCGFloat(min:10)) >= 10
+//        expect(number.randomCGFloat(max:10)) <= 10
+//
+//        expect(number.randomCGFloat(min:5, max:7)) <= 7
+//        expect(number.randomCGFloat(min:5, max:7)) >= 5
+//      }
 
       it("creates random Doubles") {
         expect(number.randomDouble()) <= 1000

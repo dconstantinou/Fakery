@@ -12,11 +12,11 @@ public final class Internet: Generator {
     var components: [String] = [
       generate("name.first_name"),
       generate("name.last_name"),
-      "\(Int.random(in: 0...10000))"
+      "\(Int.random(in: 0..<10000))"
     ]
 
     let randomCount = Int(components.count) - 1
-    let count =  Int.random(in: 0...randomCount) + randomCount
+    let count = Int(Int.random(in: 0..<randomCount) + randomCount)
 
     var gap = ""
     if let sep = separator {

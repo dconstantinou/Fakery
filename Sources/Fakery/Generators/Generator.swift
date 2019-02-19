@@ -23,12 +23,8 @@ public class Generator {
   // MARK: - Filling
 
   public func numerify(_ string: String) -> String {
-    let count = UInt32(Constants.numbers.count)
-
     return String(string.enumerated().map { (index, item) in
-      let numberIndex = index == 0 ? UInt32.random(in: 0..<count) :
-        UInt32.random(in: 0...count)
-      let char = Constants.numbers[Int(numberIndex)]
+      let char = Constants.numbers.random()!
       return String(item) == "#" ? char : item
       })
   }
