@@ -19,7 +19,7 @@ public final class Date {
   public func birthday(_ minAge: Int, _ maxAge: Int) -> Foundation.Date {
     let olderAgeBirthDate = todayAddingYears(-maxAge)
     let earlierAgeBirthDate = todayAddingYears(-minAge)
-    return between(earlierAgeBirthDate, olderAgeBirthDate)
+    return between(olderAgeBirthDate, earlierAgeBirthDate)
   }
 
   private func todayAddingDays(_ days: Int) -> Foundation.Date {
